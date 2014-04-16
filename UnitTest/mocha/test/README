@@ -1,0 +1,29 @@
+mocha单元测试框架
+
+参考文档：
+《从 TDD 到 BDD》:http://www.cnblogs.com/lidaobing/archive/2010/07/18/1779987.html
+mocha的github官网：http://visionmedia.github.io/mocha
+《初识 mocha in NodeJS》：http://cnodejs.org/topic/516526766d38277306c7d277
+
+安装：
+npm install -gd mocha
+
+使用：
+mocha test.js
+
+关于BDD和TDD
+BDD(Behavior Driven Develop)，行为驱动开发
+TDD(Test Driver Develop),测试驱动开发
+两者最主要的区别是BDD可以在开发前,从客户经理处获取需求后，定义出类的行为，就可以进行单元测试的编写，而不需要先开发代码再写单元测试。
+
+
+技巧：
+在test目录下添加mocha.opts，可添加命令行选项
+
+
+simple_test.js:简单的单元测试
+async_test.js:异步回调函数的单元测试
+before_after_test.js:添加before,after
+pending_test.js:待实现的单元测试
+skip_only_test.js:控制跳过单元测试,只运行指定的单元测试
+setTimeOut_test.js:设置单元测试的超时时间
