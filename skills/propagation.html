@@ -1,0 +1,53 @@
+<html>
+	<body>
+
+		<div id="out" style="width:500px;height:300px;border:1px solid black"> 
+			    <div id='inner1' style="width:400px;height:200px;border:1px solid black">
+				          <div id="inner2" style="width:300px;height:100px;border:1px solid black">
+						          click 
+							        </div>
+								    </div>
+							    </div>
+							     </body>
+							      <script>
+								       var a = document.querySelector('div#out')
+								       var b = document.querySelector('div#inner1')
+								       var c = document.querySelector('div#inner2')
+
+								       a.addEventListener('click',function(e){
+								           alert('a在冒泡阶段') 
+									   	alert('a在冒泡阶段'+e.target.id)//inner2
+										    alert('a在冒泡阶段'+this.id)//out
+										        alert('a在冒泡阶段'+e.currentTarget.id)//out
+											},false)
+											a.addEventListener('click',function(e){
+											    alert('a在捕获阶段')
+											    	alert('a在捕获阶段'+e.target.id)//inner2
+												    alert('a在捕获阶段'+this.id)//out
+												        alert('a在捕获阶段'+e.currentTarget.id)//out
+													},true)
+
+													b.addEventListener('click',function(e){
+
+													    alert('b在冒泡阶段')
+													    	alert('b在冒泡阶段'+e.target.id)//inner2
+														    alert('b在冒泡阶段'+this.id)//inner1
+														        alert('b在冒泡阶段'+e.currentTarget.id)//inner1
+															},false)
+															b.addEventListener('click',function(e){
+																alert('b在捕获阶段')
+																	//e.stopPropagation()   //如果在此调用，则会切断事件调用链 inner2的捕获事件，inner1的冒泡事件,inner2的冒泡事件.
+																		alert('b在捕获阶段'+e.target.id)//inner2
+																		    alert('b在捕获阶段'+this.id)//inner1
+																		        alert('b在捕获阶段'+e.currentTarget.id)//inner1
+																			   
+																			},true)
+																			c.addEventListener('click',function(e){
+																			    alert('内部元素事件')
+																			    	alert('内部元素事件'+e.target.id)//inner2
+																				    alert('内部元素事件'+this.id)//inner2
+																				        alert('内部元素事件'+e.currentTarget.id)//inner2
+																					})
+
+																				</script>
+																				 </html>
