@@ -1,11 +1,65 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+	<%include head.ejs %>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%=title%></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="邮箱" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="密码" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">登陆</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>微博主页</h1>
+        <p>在这里，你可以轻松得到最新的时事信息，明星动向，技术信息，科技资讯。你也可以将你的第一首资料与你的朋友分享，记录你生活的点点滴滴</p>
+        <p><a class="btn btn-primary btn-lg" role="button">想知道更多&raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Tim Leung的微博</h2>
+          <p>Tim Leung是一名程序猿，除了敲代码啥也不会干了，在这里，你可以了解到程序猿的生活的不堪</p>
+          <p><a class="btn btn-default" href="#" role="button">查看更多&raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Rain Wang的微博</h2>
+          <p>Rain Wang是一名既聪明又可以的时尚女性，它引领着时代的潮流，吸引着男士的目光</p>
+          <p><a class="btn btn-default" href="#" role="button">查看更多&raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>贾静雯的微博</h2>
+          <p>贾静雯，一位红到发紫的明星，曾经演出过《倚天屠龙记》里的赵敏，以其火辣的身材和迷人的大眼睛征服了大批宅男。</p>
+          <p><a class="btn btn-default" href="#" role="button">查看更多&raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div>	
   </body>
 </html>

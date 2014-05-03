@@ -3,7 +3,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Micro Blog'});
+});
+
+router.get('/list',function(req,res){
+	res.render('list',{
+		title:'List',
+		items:[1991,'tim','express','Node.js' ]
+	});
 });
 
 router.get('/u/:user',function(req,res){
