@@ -14,7 +14,7 @@
  * value:属性值
  * writable:boolean，是否可写
  *
- * set:一个函数，在写属性时调用该函数
+ * set:一个函数，在写属性时调用该函数 
  * get:一个函数，在读取属性时调用该函数
  *
  * 其中value,writable与set,get不能同时存在descriptor中
@@ -93,4 +93,26 @@ var assert=require("assert");
 	assert.ok(obj.name==='tim');
 	obj.name='rain';
 	assert.ok(obj.name==='rain');
+})();
+
+/**
+ * Object.create(prototype,descriptors)
+ * 创建一个指定原型的对象，如果prototype为null，即该对象不存在原型链。
+ * descriptors是一个包含多个属性描述符的对象
+ */
+(function(){
+	//创建一个无原型链的对象，并且它有两人个属性，一个是age,一个是name
+	var person=Object.create(null,{
+		name:{
+			value:"tim",
+			enumerable:true
+		},
+		age:{
+			value:18,
+			enumerable:true
+		}
+	});
+	assert.ok(person.name==="tim");
+	assert.ok(person.age===18);
+	assert.ok(Object.getPrototypeOf(person)===null);
 })();
