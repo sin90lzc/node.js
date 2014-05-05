@@ -4,8 +4,9 @@ describe("sort",function(){
 	var arr=[];
 	beforeEach(function(){
 		arr=[];
-		for(var i=0;i<10000;i++)
+		for(var i=0;i<100000;i++)
 			arr.push(Math.round(Math.random()*10000));
+			//arr.push(i);
 	});	
 	function judge(arr){
 		for(var i=0;i<arr.length-1;i++){
@@ -22,10 +23,18 @@ describe("sort",function(){
 		})
 	})
 	describe("#sortByMaoPao",function(){
-		it("should sort arr by asc",function(){
+		it.skip("should sort arr by asc",function(){
 			var testTime=Date.now()
 			sort.sortByMaoPao(arr);
 			console.log("sort by MaoPao use %d ms",Date.now()-testTime);
+			judge(arr);
+		})
+	})
+	describe("#sortByHeap",function(){
+		it("should sort arr by heap method",function(){
+			var testTime=Date.now()
+			var temp=sort.sortByHeap(arr);
+			console.log("sort by heap method use %d ms",Date.now()-testTime);
 			judge(arr);
 		})
 	})
