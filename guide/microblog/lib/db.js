@@ -1,4 +1,4 @@
-var settings=require('./Setting');
+var settings=require('./Settings');
 var Db=require('mongodb').Db;
 var Connection=require('mongodb').Connection;
 var Server=require('mongodb').Server;

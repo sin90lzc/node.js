@@ -23,7 +23,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({secret:settings.cookiesecret,store:new MongoStore({db:settings.db})}));
+app.use(session({secret:settings.cookiesecret,store:new MongoStore(settings)}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
