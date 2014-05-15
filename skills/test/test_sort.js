@@ -38,4 +38,20 @@ describe("sort",function(){
 			judge(arr);
 		})
 	})
+	describe("#sortByDirectInsert",function(){
+		it.skip("should sort arr by DirectInsert method",function(){
+			var testTime=Date.now()
+			sort.sortByDirectInsert(arr);	
+			console.log("sort by DirectInsert method use %d ms",Date.now()-testTime);
+			judge(arr);
+		});
+	});
+	describe("#sortByShell",function(){
+		it("should sort arr by Shell method",function(){
+			var testTime=Date.now();
+			sort.sortByShell(arr);
+			console.log("sort by Shell method use %d ms",Date.now()-testTime);
+			judge(arr);
+		});
+	});
 })

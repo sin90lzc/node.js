@@ -106,3 +106,39 @@ sort.sortByHeap=function(arr,topN){
 		return topList || arr;
 	})();
 }
+
+/**
+ *
+ * 直接插入排序算法
+ * 
+ * 原理：就像玩卡牌把卡牌排序一样，从牌堆中拿牌，第一次拿两张牌，如果第二张牌比第一张牌小，则把第二张牌向第一张牌插入，此时第一，第二张牌是已排序的了，接着取第三张牌，如果比第二张牌小，但比第一张牌大，则插入到两者中间...如此类推。应用到数组中，我们把整个数组看成是一个牌堆，逐次从数组中取数并插入到合适的位置
+ */
+sort.sortByDirectInsert=function(arr){
+	for(var i=1;i<arr.length;i++){
+		var temp=arr[i];
+		for(var j=i-1;j>=0&&temp<arr[j];j--){
+			arr[j+1]=arr[j];
+		}
+		arr[j+1]=temp;
+	}	
+};
+
+/**
+ *
+ * 希尔排序算法
+ */
+sort.sortByShell=function(arr){
+	var step=Math.floor(arr.length/2);
+	while(step>=1){
+		for(var i=step;i<arr.length;i++){
+			var temp=arr[i];
+			for(var j=i-step;j>=0&&temp<arr[j];j=j-step){
+				arr[j+step]=arr[j];
+			}
+			arr[j+step]=temp;
+		}
+		step=Math.floor(step/2);
+	}
+
+}
+
