@@ -24,13 +24,15 @@ router.post('/post',function(req,res){
 		});
 
 router.get('/reg',function(req,res){
-	res.render("reg",{title:'用户注册'});
+	res.render("reg",{title:'用户注册',error:req.flash("error")});
 });
 
 router.post('/reg',function(req,res){
 	if(req.body['password-repeat'] != req.body['password']){
 		req.flash('error','两次输入的口令不一致');
-		return res.render('reg',{title:'用户注册',error:'两次输入的口令不一致'});
+		res.redirect("/reg");
+		//return res.render('reg',{title:'用户注册',error:'两次输入的口令不一致'});
+		return;
 	}
 
 	//生成口令的散列值
@@ -68,10 +70,35 @@ router.get('/login',function(req,res){
 
 router.post('/login',function(req,res){
 
+	//生成口令的散列值
+	var md5=crypto.createHash('md5');
+	var password = md5.update(req.body.password).digest('base64');
+	
+	var newUser=new User({
+		name:req.body.username,
+		password:password
 		});
+	
+	//检查用户名是否已经存在
+	User.get(newUser.name,function(err,user){
+		if(err){
+			return res.render("reg",{title:'用户注册',error:err});
+		}
+		if(!user){
+			err= 'Username already exists.';	
+			return res.render("reg",{title:'用户注册',error:err});
+		}
+		if(user.password!=password)
+			err= '帐号或者密码错误!';
+		req.session.user=user;
+		res.redirect('/');	
+	});
 
-router.get('logout',function(req,res){
+});
 
+router.get('/logout',function(req,res){
+	req.session.user=null;
+	res.redirect("/");
 		});
 
 module.exports = router;

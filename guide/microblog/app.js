@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var session=require('express-session');
 var MongoStore=require("connect-mongo")(session);
 var settings=require('./lib/Settings');
+var pageParams=require("page_params");
+var flash=require("connect-flash");
 
 
 var routes = require('./routes/index');
@@ -24,7 +26,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret:settings.cookiesecret,store:new MongoStore(settings)}));
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// 常用页面渲染中间件
+app.use(pageParams());
 
 app.use('/', routes);
 app.use('/users', users);

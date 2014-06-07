@@ -1,9 +1,29 @@
-<ul class="nav">
-	<li class="active"><a href="/">首页</a></li>
-	<% if (!user) { %>
-		<li><a href="/login">登入</a></li>
-		<li><a href="/reg">注册</a></li>
-	<% } else { %>
-		<li><a href="/logout">登出</a></li>
-	<% } %>
-</ul>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%=title%></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form" method="post" action="/login">
+		<% if(!session.user){ %>
+            <div class="form-group">
+              <input type="text" id="username" name="username" placeholder="邮箱" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="password" placeholder="密码" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">登陆</button>
+		<a class="btn btn-primary" href="./reg">注册</a>	
+		<% } else{%>
+		<a class="btn btn-primary" href="./logout">退出</a>	
+		<% } %>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>

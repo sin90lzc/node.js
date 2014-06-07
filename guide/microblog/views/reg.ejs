@@ -1,6 +1,20 @@
-<!DOCTYPE html>
 <html>
-<% include head %>
+<% include head.ejs %>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><%=title%></a>
+        </div>
+        <div class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
 <form class="form-horizontal" method="post">
 	<fieldset>
 		<legend>用户注册</legend>
@@ -28,6 +42,9 @@
 		<div class="form-actions">
 			<button type="submit" class="btn btn-primary">注册</button>
 		</div>
+		<% if(error){ %>
+		<span><%= error %></span>
+		<% }%>
 	</fieldset>
 </form>	
 	

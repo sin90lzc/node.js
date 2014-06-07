@@ -1,0 +1,14 @@
+{
+  "name": "page_params",
+  "version": "1.0.0",
+  "description": "用于express的中间件，在express中，通过给res.locals赋值，为ejs模板提供渲染变量。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Leung",
+  "license": "MIT",
+  "dependencies": {
+    "utils-merge": "^1.0.0"
+  }
+}
