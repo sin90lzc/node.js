@@ -23,6 +23,18 @@ router.post('/post',function(req,res){
 
 		});
 
+function checkUserLogin(req,res,next){
+	if(req.session.user){
+		res.redirect("/");
+	}else{
+		next();
+	}
+}
+/**
+ * 此处两个/reg，使用了堆栈的数据结构，先处理第一个/reg，再处理下一个/reg
+ */
+router.get('/reg',checkUserLogin);
+
 router.get('/reg',function(req,res){
 	res.render("reg",{title:'用户注册',error:req.flash("error")});
 });
@@ -64,8 +76,9 @@ router.post('/reg',function(req,res){
 	});
 });
 
+router.get('/login',checkUserLogin);
 router.get('/login',function(req,res){
-
+	res.render('login',{title:'登陆',error:req.flash('error')})
 		});
 
 router.post('/login',function(req,res){
@@ -81,15 +94,16 @@ router.post('/login',function(req,res){
 	
 	//检查用户名是否已经存在
 	User.get(newUser.name,function(err,user){
-		if(err){
-			return res.render("reg",{title:'用户注册',error:err});
-		}
 		if(!user){
 			err= 'Username already exists.';	
-			return res.render("reg",{title:'用户注册',error:err});
 		}
-		if(user.password!=password)
+		if(user.password!=password){
 			err= '帐号或者密码错误!';
+		}
+		if(err){
+			req.flash('error',err);
+			return	res.redirect("/login");
+		}
 		req.session.user=user;
 		res.redirect('/');	
 	});

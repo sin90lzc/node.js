@@ -21,6 +21,7 @@
             <button type="submit" class="btn btn-success">登陆</button>
 		<a class="btn btn-primary" href="./reg">注册</a>	
 		<% } else{%>
+		<span class="navbar-brand">您好，<%=session.user.name%></span>	
 		<a class="btn btn-primary" href="./logout">退出</a>	
 		<% } %>
           </form>
