@@ -1,6 +1,6 @@
 /**
  *
- * 在看过node.js中utils.inherits的继承之后，想到了多从继承还可以这么来
+ * 在看过node.js中utils.inherits的继承之后，想到了多重继承还可以这么来
  */
 //inherits方法抄自utils.inherits
 function inherits(subCtor,superCtor){
@@ -24,3 +24,4 @@ inherits(A,B);
 var a=new A();
 
 console.log(a instanceof A);
+console.log(a instanceof B);

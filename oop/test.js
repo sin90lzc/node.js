@@ -1,3 +1,2 @@
-function f(){}
-
-console.log(f.prototype.__proto__==Object.prototype);
+function f(a,b,c){}
+console.log(f.length)
