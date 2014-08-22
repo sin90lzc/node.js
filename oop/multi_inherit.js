@@ -10,6 +10,9 @@ var ClassB=function(){};
 ClassB.prototype={age:"18"};
 var ClassC={constructor:function(school){this.school=school},isStudent:function(){return this.school;}};
 
+//classes数组是一组父类的构造函数（或者对象里有一个constructor的属性方法作为构造函数）
+//params是classes父类构造函数的入参
+//返回一个构造函数，该构造函数迭代调用classes数组中的父类构造函数。并且从这个构造函数的开始的原型，通过原型链的方式，连接上所有父类构造函数的原型
 var Clazz=function(classes,params){
 	if(typeof classes !=='object' && typeof classes !== 'function'){
 		throw new Error("入参错误");

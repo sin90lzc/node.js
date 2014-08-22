@@ -1,7 +1,7 @@
 alert=console.log;
 function WhoAmI()       //定义一个函数WhoAmI
 {
-alert("I'm " + this.name + " of " + typeof(this));
+	alert("I'm " + this.name + " of " + typeof(this));
 };
 
 WhoAmI();   //此时是this当前这段代码的全局对象，在浏览器中就是window对象，其name属性为空字符串。输出：I'm of object
@@ -34,6 +34,9 @@ var anObj=new MyFunc();
 
 //part2
 var otherObj={};
-otherObj.prototype=MyFunc.prototype;
+otherObj.__proto__=MyFunc.prototype;
 MyFunc.call(otherObj);
-//part1与part2创建对象的方式是没有区别的。我们可以理解成new操作符先创建一个空对象，空对象的prototype为构造函数的prototype,然后用这个空对象调用构造函数(当然实际上还是有区别的,这样创建的两人个对象的constructor就不一样的）。而this即指向这个空对象了。
+//part1与part2创建对象的方式是没有区别的。我们可以理解成new操作符先创建一个空对象，空对象的__proto__为构造函数的prototype,然后用这个空对象调用构造函数(当然实际上还是有区别的,这样创建的两人个对象的constructor就不一样的）。而this即指向这个空对象了。
+
+alert("anObj.construtor===otherObj.construtor:"+(anObj.construtor===otherObj.construtor));
+alert("otherObj instanceof MyFunc:"+(otherObj instanceof MyFunc));

@@ -116,3 +116,26 @@ var assert=require("assert");
 	assert.ok(person.age===18);
 	assert.ok(Object.getPrototypeOf(person)===null);
 })();
+
+
+
+/**
+ *
+ * 在对象中使用get，set关键字，在给对象赋值或取值时调用函数
+ *
+ *
+ */
+(function(){
+	var obj={
+		_age:0,
+		set age(a){
+			this._age=a;
+		},
+		get age(){
+			return this._age;
+		}
+	}
+	obj.age=20;
+	assert.ok(obj._age===20);
+	assert.ok(obj.age===20);
+ })();
