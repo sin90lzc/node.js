@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var crypto=require('crypto');
 var User=require('../lib/user.js');
+var log=require('debug')('microblog');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -95,14 +96,15 @@ router.post('/login',function(req,res){
 	//检查用户名是否已经存在
 	User.get(newUser.name,function(err,user){
 		if(!user){
-			err= 'Username already exists.';	
-		}
-		if(user.password!=password){
-			err= '帐号或者密码错误!';
+			err= '用户不存在!';	
+		}else{
+			if(user.password!=password){
+				err= '帐号或者密码错误!';
+			}
 		}
 		if(err){
 			req.flash('error',err);
-			return	res.redirect("/login");
+			return res.redirect("/login");
 		}
 		req.session.user=user;
 		res.redirect('/');	

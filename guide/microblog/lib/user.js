@@ -8,7 +8,7 @@ function User(user){
 module.exports=User;
 
 User.prototype.save=function(callback){
-	console.log("world");
+	//console.log("world");
 	//存入 mongodb的文件
 	var user={
 		name:this.name,
