@@ -53,11 +53,12 @@ var Clazz=function(classes,params){
 		}	
 	}else{
 		var func;
+		var tmp_proto;
 		if(typeof classes==='function'){
-			__class.prototype=classes.prototype;
+			tmp_proto=classes.prototype;
 			func=classes;
 		}else if(typeof classes==='object'){
-			__class.prototype=classes;
+			tmp_proto=classes;
 			func=classes.constructor;
 		}
 		__class=function(){
@@ -65,6 +66,7 @@ var Clazz=function(classes,params){
 				func.apply(this,params);
 			}
 		}
+		__class.prototype=tmp_proto;
 		
 	}
 	function join2last(proto,iclass){

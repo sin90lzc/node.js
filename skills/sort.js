@@ -65,6 +65,13 @@ sort.sortByQuickSort=function(arr){
 /**
  *
  * 堆排序
+ * 原理：把数组看成是二叉树，并把二叉树排列成大根堆二叉树（算法的核心思想），大根堆二叉树是指所有父节点的值都比子节点大。
+ * 因此位于最顶端的父节点一定是最大值，取出最大值，把剩余的数再次排列成大根堆二叉数，再取出次大值，如此循环...
+ *
+ * 核心计算公式：
+ * 最后一个二叉树的父节点序号：arr.length/2-1
+ * 父节点左边子节点序号：parent*2+1
+ * 父节点右边子节点序号：parent*2+2
  */
 sort.sortByHeap=function(arr,topN){
 	//使指定父节点下的二叉树按大根堆排列
@@ -112,11 +119,14 @@ sort.sortByHeap=function(arr,topN){
  * 直接插入排序算法
  * 
  * 原理：就像玩卡牌把卡牌排序一样，从牌堆中拿牌，第一次拿两张牌，如果第二张牌比第一张牌小，则把第二张牌向第一张牌插入，此时第一，第二张牌是已排序的了，接着取第三张牌，如果比第二张牌小，但比第一张牌大，则插入到两者中间...如此类推。应用到数组中，我们把整个数组看成是一个牌堆，逐次从数组中取数并插入到合适的位置
+ *
+ * 首先把数组的第一个元素看成是已排序的数组（因为只有一个元素，不用排就已经是有序的了），第二个元素就在前面那个已排序的数组中插入。那么前两个元素就已经是有序的了，接着把第三个元素向前面有序数组插入。
  */
 sort.sortByDirectInsert=function(arr){
 	for(var i=1;i<arr.length;i++){
 		var temp=arr[i];
-		for(var j=i-1;j>=0&&temp<arr[j];j--){
+		var j=i-1;
+		for(;j>=0&&temp<arr[j];j--){
 			arr[j+1]=arr[j];
 		}
 		arr[j+1]=temp;
@@ -126,13 +136,16 @@ sort.sortByDirectInsert=function(arr){
 /**
  *
  * 希尔排序算法
+ *
+ * 原理：希尔排序是直接插入排序的优化版，取相同步长(一般首次是数组长度的一半，第二次是上一次的一半，以此类推，直到步长为1。其实直接插入排序就是只进行了一次插入排序，而步长为1）的元素为一组，应用直接插入排序算法。
  */
 sort.sortByShell=function(arr){
 	var step=Math.floor(arr.length/2);
 	while(step>=1){
 		for(var i=step;i<arr.length;i++){
 			var temp=arr[i];
-			for(var j=i-step;j>=0&&temp<arr[j];j=j-step){
+			var j=i-step;
+			for(;j>=0&&temp<arr[j];j=j-step){
 				arr[j+step]=arr[j];
 			}
 			arr[j+step]=temp;

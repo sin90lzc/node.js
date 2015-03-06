@@ -87,7 +87,7 @@ var assert=require("assert");
 	Object.defineProperty(obj,"name",{
 		configurable:true,
 		enumerable:true,
-		get:function(){return this.nick;},
+		get:function(){return this.nick;},//注意，这里不能使用this.name，否则会死循环
 		set:function(s){this.nick=s;}
 	});
 	assert.ok(obj.name==='tim');
@@ -101,7 +101,7 @@ var assert=require("assert");
  * descriptors是一个包含多个属性描述符的对象
  */
 (function(){
-	//创建一个无原型链的对象，并且它有两人个属性，一个是age,一个是name
+	//创建一个无原型链的对象，并且它有两个属性，一个是age,一个是name
 	var person=Object.create(null,{
 		name:{
 			value:"tim",

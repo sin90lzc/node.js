@@ -14,10 +14,16 @@ var assert=require("assert");
 (function(){
 	var regex=/(he(llo)|world)/
 	var ret=regex.exec("hello");
+	assert.equal(ret[0],"hello");
 	assert.equal(ret[1],"hello");
+	assert.equal(ret[2],"llo");
+	assert.equal(ret.length,3);
 	regex=/(?:he(llo)|world)/
 	ret=regex.exec("hello");
+	assert.equal(ret[0],"hello");
 	assert.equal(ret[1],"llo");
+	assert.equal(ret.length,2);
+
  })();
 
 
@@ -32,10 +38,12 @@ var assert=require("assert");
 	var ret=regex.exec("helloworld");
 	assert.equal(ret[0],"helloworld");
 	assert.equal(ret[1],"world");
+	assert.equal(ret.length,2);
 	regex=/hello(?=world)/
 	ret=regex.exec("helloworld");
 	assert.equal(ret[0],"hello");
 	assert.notEqual(ret[1],"world");
+	assert.equal(ret.length,1);
  })();
 
 
@@ -51,4 +59,5 @@ var assert=require("assert");
 	regex=/hello(?!word)/
 	ret=regex.exec("helloworld");
 	assert.equal(ret[0],"hello");
+	assert.equal(ret.length,1);
  })();

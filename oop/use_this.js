@@ -36,7 +36,11 @@ var anObj=new MyFunc();
 var otherObj={};
 otherObj.__proto__=MyFunc.prototype;
 MyFunc.call(otherObj);
-//part1与part2创建对象的方式是没有区别的。我们可以理解成new操作符先创建一个空对象，空对象的__proto__为构造函数的prototype,然后用这个空对象调用构造函数(当然实际上还是有区别的,这样创建的两人个对象的constructor就不一样的）。而this即指向这个空对象了。
+//part1与part2创建对象的方式是没有区别的。我们可以理解成new操作符先创建一个空对象，空对象的__proto__为构造函数的prototype,然后用这个空对象调用构造函数。而this即指向这个空对象了。
 
-alert("anObj.construtor===otherObj.construtor:"+(anObj.construtor===otherObj.construtor));
+alert("anObj.constructor===otherObj.constructor:"+(anObj.constructor===otherObj.constructor));
 alert("otherObj instanceof MyFunc:"+(otherObj instanceof MyFunc));
+
+
+alert(anObj.constructor);
+alert(otherObj.constructor);

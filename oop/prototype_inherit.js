@@ -1,3 +1,4 @@
+var alert=console.log;
 /**
  *
  *原型继承的例子

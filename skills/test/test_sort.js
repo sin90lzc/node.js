@@ -23,7 +23,7 @@ describe("sort",function(){
 		})
 	})
 	describe("#sortByMaoPao",function(){
-		it.skip("should sort arr by asc",function(){
+		it("should sort arr by asc",function(){
 			var testTime=Date.now()
 			sort.sortByMaoPao(arr);
 			console.log("sort by MaoPao use %d ms",Date.now()-testTime);
@@ -39,7 +39,7 @@ describe("sort",function(){
 		})
 	})
 	describe("#sortByDirectInsert",function(){
-		it.skip("should sort arr by DirectInsert method",function(){
+		it("should sort arr by DirectInsert method",function(){
 			var testTime=Date.now()
 			sort.sortByDirectInsert(arr);	
 			console.log("sort by DirectInsert method use %d ms",Date.now()-testTime);

@@ -7,7 +7,7 @@
 alert=console.log;
 function Person(name)   //带参数的构造函数
 {
- this.name = name;   //将参数值赋给给this对象的属性
+ this.name = name;   //将参数值赋给this对象的属性
  this.SayHello = function() {alert("Hello, I'm " + this.name);};   //给this对象定义一个SayHello方法。
 };
 
