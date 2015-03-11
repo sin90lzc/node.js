@@ -20,3 +20,28 @@ assert=require("assert");
 	assert.ok(arr.slice(1,-1).length===arr.length-2);
 	assert.ok(arr.slice(2,1).length===0);
 })();
+
+
+
+/**
+ * 
+ * arrVar.some(callback[,thisArg]);
+ * 只要数组中任意一个元素调用callback返回true，那么some就返回true，否则返回False
+ *
+ * thisArg:指定在callback中this的引用对象，如果未指定，this为undefined
+ *
+ * callback的定义：
+ * function(value,index,arr);
+ * value:元素值
+ * index：元素所在索引
+ * arr：元素所在数组
+ *
+ */
+(function(){
+	var arr=[0,1,2,3,4];
+	var tmp={x:1,y:2};
+	assert.ok(arr.some(function(ele){return ele<5;}));
+	assert.ok(arr.some(function(ele){return ele<4;}));
+	assert.ok(!arr.some(function(ele){return ele<0;}));
+	assert.ok(arr.some(function(ele){return this==tmp},tmp));
+})();
